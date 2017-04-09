@@ -16,7 +16,6 @@ from tensorflow.examples.tutorials.mnist import input_data
 mnist = input_data.read_data_sets('MNIST_data/', one_hot=True)
 # -------------------------------------------------
 
-# TODO, extract from dataset
 nsamples = mnist.train.num_examples
 data_dim = 784
 dataset_name = 'MNIST'
@@ -41,12 +40,12 @@ for epoch in range(epochs):
         avg_cost += cost / nsamples * batch_size
         final_cost = avg_cost
     
-    print 'Dataset', dataset_name, 'Epoch:', '%04d' % (epoch+1), 'Cost:', '{:.9f}'.format(avg_cost)
+    print('Dataset', dataset_name, 'Epoch:', '%04d' % (epoch+1), 'Cost:', '{:.9f}'.format(avg_cost))
 
 end = time.time()
 runtime = '{:.3f}'.format(end-start) 
 
-print 'Total runtime over the training set:', runtime
+print('Total runtime over the training set:', runtime)
 
 # reconstruction
 samples, classes = mnist.test.next_batch(batch_size)
@@ -81,5 +80,5 @@ name = dataset_name + '_' + name
 if not os.path.exists('img/' + dataset_name):
             os.makedirs('img/' + dataset_name)
 
-plt.savefig('img/' + name +'_batch_'+str(batch_size)+'_epoch_'+str(epochs)+'.png')
+plt.savefig('img/'+name+'_batch_'+str(batch_size)+'_epoch_'+str(epochs)+'.png')
 plt.close()

@@ -63,7 +63,7 @@ class VAE:
         eps = tf.random_normal((batch_size, structure[-1]), 0, 1, dtype=tf.float32)
         
         # z = mu + zlogvar*epsilon
-        self.Z = tf.add(self.zmean, tf.mul(tf.sqrt(tf.exp(self.zlogvar)), eps))
+        self.Z = tf.add(self.zmean, tf.multiply(tf.sqrt(tf.exp(self.zlogvar)), eps))
         
         # (TODO): extract labels
         self.labels = tf.nn.softmax(self.Z)
